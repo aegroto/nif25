@@ -1,0 +1,3 @@
+model:
+  genesis_params:
+    architecture: { range: [960, 144], e: 8.0, length: 5 }

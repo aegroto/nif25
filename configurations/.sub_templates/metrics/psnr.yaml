@@ -1,0 +1,22 @@
+__quality_loss: &quality_loss 
+  fixed_importance: 1.0
+  reconstruction: 
+    reference_value: 1.0
+    target_value: 0.0
+    components:
+      - type: log_cosh
+
+fitting:
+  training:
+    losses: [*quality_loss]
+
+quantization:
+  training:
+    losses: [*quality_loss]
+
+
+
+quantization_search:
+  eval_mode: "psnr"
+  drop_tolerance: 0.5
+

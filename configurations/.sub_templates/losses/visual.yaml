@@ -1,0 +1,14 @@
+__loss: &loss
+  - { type: log_cosh, weight: 1.0 }
+  - { type: ssim, weight: 0.01 }
+
+fitting:
+  training:
+    loss: *loss
+
+quantization:
+  training:
+    loss: *loss
+
+quantization_search:
+  eval_mode: "ms-ssim"

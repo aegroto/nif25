@@ -1,0 +1,111 @@
+debug: false
+
+model:
+  generator_params:
+    shuffle: 2
+    frequency_params:
+      num_frequencies: 16
+      scale : 1.4
+  genesis_params:
+    activation_params: 
+      period_modulations: { range: [0.8, 1.2], e: 1.0 }
+      phase_sampling_period: 5.0
+
+__loss: &loss
+  - { type: log_cosh, weight: 1.0 }
+
+fitting:
+  steps: 30
+  selector: 
+    eval_method: loss
+    min_quantization_amount: 0.0
+  quantization: 
+    rounding_mode: "round"
+    groups: &q_groups []
+    default: &q_config
+      mode: "uniform"
+      max_symbol: 127
+      bound_calculation: { mode: "global" }
+      zero_calculation: { mode: "zero" }
+  training:
+    iterations: &iters 50
+    log_interval: 10
+    optimizer:
+      lr: 1.0e-3
+      weight_decay: 1.0e-5
+    scheduler:
+      warmup_iterations: 5
+      T_0: *iters
+      floor_lr: 5.0e-5
+      decay_slope: 1.0
+      peak_decay_factor: 0.96
+      floor_decay_factor: 0.99
+    training_noise: { start: 0.0, end: 0.0, smoothing: 0.25, recalibration_interval: &recalibration_interval 1 }
+    loss: *loss
+  post_training:
+    log_interval: 10
+    iterations: &pt_iters 10
+    optimizer:
+      lr: 4.0e-6
+    scheduler:
+      T_0: *pt_iters
+      floor_lr: 4.0e-8
+    training_noise: { start: 1.0, end: 1.0, smoothing: 1.0, recalibration_interval: 10 }
+  restart:
+    skip: &skip []
+    amount: { start: 0.5, end: 0.35, smoothing: 0.4 }
+    range: { start: 0.3, end: 0.0, smoothing: 0.95 }
+
+quantization:
+  steps: 5
+  selector: 
+    eval_method: loss
+    min_quantization_amount: 0.95
+  quantization: 
+    rounding_mode: "round"
+    groups: *q_groups 
+    default: *q_config
+  training:
+    iterations: &quant_iters 50
+    log_interval: 10
+    training_noise: { start: 1.0, end: 1.0, smoothing: 1.0, recalibration_interval: *recalibration_interval }
+    optimizer:
+      lr: 4.0e-6
+      weight_decay: 1.0e-5
+    scheduler: &quant_scheduler
+      warmup_iterations: 5
+      T_0: *quant_iters
+      peak_decay_factor: 0.75
+      floor_decay_factor: 0.1
+      floor_lr: 4.0e-08
+      warmup_slope: 2.0
+      decay_slope: 5.0
+    loss: *loss
+  post_training: null
+  restart: &quant_restart
+    skip: *skip
+    amount:
+      start: 0.01
+      end: 0.0
+      smoothing: 0.5
+    range:
+      start: 1.0e-05
+      end: 1.0e-05
+      smoothing: 0.5
+
+quantization_search:
+  eval_mode: "psnr"
+  drop_tolerance: 0.2
+  steps: 1
+  max_symbol_search: 
+    ref_entropy: 15.0
+    precision: 0.1
+    first_interval: [3.0, 15.0]
+    max_steps: 10
+    samples_per_step: 10
+  training:
+    iterations: &quant_search_iters 5
+    scheduler:
+      T_0: *quant_search_iters
+
+

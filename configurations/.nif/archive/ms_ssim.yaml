@@ -1,0 +1,18 @@
+model:
+  genesis_params:
+    architecture: { range: [60, 37], e: 1.12, length: 4 }
+    period_modulator_params: 
+      architecture: { range: [134, 49], e: 2.40, length: 3 }
+
+fitting:
+  tuning:
+    loss: &loss
+      components:
+        - type: l1
+          weight: 0.8
+        - type: ssim
+          weight: 0.2
+
+quantization:
+  tuning:
+    loss: *loss

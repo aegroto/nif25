@@ -1,0 +1,11 @@
+torch
+torchvision
+pytorch-msssim
+lpips
+scikit-image
+constriction
+brotli
+pyyaml
+kornia
+tensorboard
+ax-platform

@@ -1,0 +1,27 @@
+model:
+  genesis_params:
+    architecture: { range: [176, 32], e: 4.0, length: 5 }
+
+fitting:
+  steps: 17
+  tuning:
+    batch:
+      - { mode: "shuffle", scale: 2 }
+    iterations: &iters 30
+    optimizer:
+      lr: 0.0063
+    scheduler:
+      warmup_iterations: 25
+      T_0: *iters
+      floor_lr: 0.00037
+      peak_decay_factor: 0.8
+      floor_decay_factor: 1.0
+  restart:
+    amount:
+      start: 0.67
+      end: 0.73
+      smoothing: 0.25
+    range:
+      start: 0.7
+      end: 0.0
+      smoothing: 0.55

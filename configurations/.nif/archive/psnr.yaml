@@ -1,0 +1,26 @@
+model:
+  genesis_params:
+    architecture: { range: [60, 37], e: 1.12, length: 4 }
+    period_modulator_params: 
+      architecture: { range: [134, 49], e: 2.40, length: 3 }
+
+fitting:
+  tuning:
+    loss: &loss
+      components:
+        - type: log_cosh
+          weight: 1.0
+        - type: ssim
+          weight: 0.01
+          args:
+            chroma_weight: &chroma_weight
+              y_weight: 0.9
+              cb_weight: 1.05
+              cr_weight: 1.05
+
+quantization:
+  tuning:
+    loss: 
+      components:
+        - type: log_cosh
+          weight: 1.0

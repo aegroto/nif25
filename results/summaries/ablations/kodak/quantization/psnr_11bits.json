@@ -1,0 +1,13 @@
+{
+    "name": "NIF25 [PSNR] - 11-bits quantization",
+    "type": "ablation",
+    "results": {
+        "config": [],
+        "state_bpp": [],
+        "bpp": [],
+        "psnr": [],
+        "ms-ssim": [],
+        "lpips": [],
+        "ssim": []
+    }
+}

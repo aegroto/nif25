@@ -1,0 +1,9 @@
+**/*.pyc
+
+runs/
+test_images
+
+tune_results/
+logs
+
+schedule.sh

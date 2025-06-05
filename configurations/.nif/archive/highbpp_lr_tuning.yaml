@@ -1,0 +1,94 @@
+fitting:
+  restart:
+    amount:
+      end: 0.9646861916278076
+      smoothing: 0.058482900525211705
+      start: 0.6028424955623314
+    range:
+      end: 0.0
+      smoothing: 0.5007820382246931
+      start: 0.6100504947105162
+    skip: &id001 []
+  selector: &id002
+    eval_method: loss
+    minimize: true
+  steps: 30
+  tuning:
+    batch:
+    - mode: shuffle
+      scale: 2
+    image_dump_interval: 450
+    iterations: 50
+    log_interval: 10
+    loss:
+      components:
+      - type: log_cosh
+        weight: 1.0
+      - args:
+          chroma_weight:
+            cb_weight: 1.05
+            cr_weight: 1.05
+            y_weight: 0.9
+        type: ssim
+        weight: 0.01
+    optimizer:
+      lr: 0.0007816468325342284
+    scheduler:
+      T_0: 50
+      floor_decay_factor: 1.0
+      floor_lr: 4.788914883307812e-05
+      peak_decay_factor: 0.9338156611751676
+      warmup_iterations: 5
+model:
+  encoder_params:
+    num_frequencies: 16
+    scale: 1.4
+  genesis_params:
+    architecture:
+      e: 8.0
+      length: 5
+      range:
+      - 960
+      - 144
+    layer_params:
+      bias_sampling_period: 5.0
+      weight_omega: 30.0
+      weight_sampling_period: 15.0
+      weight_span: 5.0
+quantization:
+  default:
+    weight_bits: 8
+  groups: []
+  restart:
+    amount:
+      end: 0.0
+      smoothing: 0.5
+      start: 0.01
+    range:
+      end: 1.0e-05
+      smoothing: 0.5
+      start: 1.0e-05
+    skip: *id001
+  selector: *id002
+  steps: 5
+  tuning:
+    batch:
+    - mode: shuffle
+      scale: 2
+    image_dump_interval: 150000
+    iterations: 15
+    log_interval: 15
+    loss:
+      components:
+      - type: log_cosh
+        weight: 1.0
+    optimizer:
+      lr: 4.0e-06
+    scheduler:
+      T_0: 15
+      decay_slope: 5.0
+      floor_decay_factor: 0.1
+      floor_lr: 4.0e-08
+      peak_decay_factor: 0.75
+      warmup_iterations: 5
+      warmup_slope: 2.0

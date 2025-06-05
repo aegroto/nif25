@@ -1,0 +1,19 @@
+date 
+
+CONFIGURATION_PATH=$1
+FILE_PATH=$2
+RESULTS_ROOT=$3
+
+UNCOMPRESSED_PATH=$RESULTS_ROOT/fitted/state.pth
+OPTIMIZER_STATE_PATH=$RESULTS_ROOT/fitted/optimizer_state.pth
+
+mkdir -p $RESULTS_ROOT/tuned/
+
+TUNED_PATH=$RESULTS_ROOT/tuned/state.pth
+
+DECODED_PATH=$RESULTS_ROOT/tuned/decoded.png
+STATS_PATH=$RESULTS_ROOT/tuned/stats.json
+
+python3 tune.py $CONFIGURATION_PATH $FILE_PATH $UNCOMPRESSED_PATH $OPTIMIZER_STATE_PATH $TUNED_PATH  --infer_path $DECODED_PATH --stats_path $STATS_PATH
+
+date

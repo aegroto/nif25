@@ -1,0 +1,12 @@
+quantization_search:
+  eval_mode: "ms-ssim"
+  drop_tolerance: 0.0
+  steps: 1
+  max_symbol_search: 
+    ref_entropy: 7.0
+    precision: 0.1
+    first_interval: [7.0, 7.0]
+    max_steps: 1
+    samples_per_step: 1
+
+

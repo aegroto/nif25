@@ -1,0 +1,23 @@
+__quality_loss: &quality_loss 
+  fixed_importance: 1.0
+  reconstruction: 
+    reference_value: 1.0
+    target_value: 0.0
+    components:
+      - { type: l1, weight: 0.8 }
+      - { type: ssim, weight: 0.2 }
+
+fitting:
+  training:
+    losses: [*quality_loss]
+
+quantization:
+  training:
+    losses: [*quality_loss]
+
+
+
+quantization_search:
+  eval_mode: "ms-ssim"
+  drop_tolerance: 0.1
+

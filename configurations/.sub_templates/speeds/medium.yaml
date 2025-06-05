@@ -1,0 +1,5 @@
+fitting:
+  training:
+    iterations: &iters 100
+    scheduler:
+      T_0: *iters

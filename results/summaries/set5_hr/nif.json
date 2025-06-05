@@ -1,0 +1,21 @@
+{
+    "name": "NIF",
+    "description": "Neural Imaging Format",
+    "results": {
+        "config": [
+            "default"
+        ],
+        "bpp": [
+            6.669949951233914
+        ],
+        "psnr": [
+            34.9108283996582
+        ],
+        "ms-ssim": [
+            0.9892417788505554
+        ],
+        "ssim": [
+            0.9290074944496155
+        ]
+    }
+}

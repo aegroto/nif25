@@ -1,0 +1,42 @@
+{
+    "name": "Strumpler meta-learned [2021]",
+    "type": "inr",
+    "results": {
+        "config": [
+            "CelebA100_1x_maml_batch_size1_epochs25000_lr0.0005_outer_lr5e-05_inner_lr1e-05_lr_type_per_parameter_per_step_maml_epochs1_adapt_steps3_ffdims_12_hdims24_hlayer3_nerf_sine_l1_reg1e-05_enc_scale1.4",
+            "CelebA100_1x_maml_batch_size1_epochs25000_lr0.0005_outer_lr5e-05_inner_lr1e-05_lr_type_per_parameter_per_step_maml_epochs1_adapt_steps3_ffdims_12_hdims32_hlayer3_nerf_sine_l1_reg1e-05_enc_scale1.4",
+            "CelebA100_1x_maml_batch_size1_epochs25000_lr0.0005_outer_lr5e-05_inner_lr1e-05_lr_type_per_parameter_per_step_maml_epochs1_adapt_steps3_ffdims_12_hdims48_hlayer3_nerf_sine_l1_reg1e-05_enc_scale1.4",
+            "CelebA100_1x_maml_batch_size1_epochs25000_lr0.0005_outer_lr5e-05_inner_lr1e-05_lr_type_per_parameter_per_step_maml_epochs1_adapt_steps3_ffdims_12_hdims64_hlayer3_nerf_sine_l1_reg1e-05_enc_scale1.4"
+        ],
+        "state_bpp": [
+            0.5047768271312236,
+            0.7687949695907639,
+            1.4417956911658592,
+            2.2620843212039996
+        ],
+        "bpp": [
+            0.5047768271312236,
+            0.7687949695907639,
+            1.4417956911658592,
+            2.2620843212039996
+        ],
+        "psnr": [
+            30.74110969543457,
+            32.53563980102539,
+            35.746528205871584,
+            38.53868808746338
+        ],
+        "ms-ssim": [
+            0.9725612014532089,
+            0.9813855814933777,
+            0.9904808390140534,
+            0.9947089421749115
+        ],
+        "ssim": [
+            0.8565127986669541,
+            0.8903461039066315,
+            0.9343587845563889,
+            0.9604057186841964
+        ]
+    }
+}

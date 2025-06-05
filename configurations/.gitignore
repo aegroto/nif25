@@ -1,0 +1,11 @@
+*
+!.gitignore
+!__default.yaml
+!.nif/
+!.nif/**/*
+
+!ablations/
+!ablations/**/*
+
+!.sub_templates/
+!.sub_templates/**/*
