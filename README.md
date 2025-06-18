@@ -1,6 +1,6 @@
 # NIF25: Reducing the Gap in INR-Based Image Compression
-[**[Pre-print]**]()
-[**[Project Page]**]()
+[**[Pre-print]**](https://doi.org/10.36227/techrxiv.175021904.44376980/v1)
+**[Project Page (Coming soon)]**
 
 This repository contains the source code used in experimental evaluations for the paper "NIF25: Reducing the Gap in INR-Based Image Compression".
 
