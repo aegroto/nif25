@@ -5,31 +5,39 @@
 This repository contains the source code used in experimental evaluations for the paper "NIF25: Reducing the Gap in INR-Based Image Compression".
 
 # Environment setup
-The Python environment can be handled using [uv](https://docs.astral.sh/uv/#installation). 
-Interpreter and requirements will be automatically installed when necessary.
+The Python environment can be handled using conda:
+```
+conda env create -f environment.yaml 
+```
+
+The command above will create an environment named `nif25`, activated by:
+
+```
+conda activate nif25
+```
 
 # Reproducing experiments
 ## Single image
 To encode a single image run the ```encode.py``` scripts:
 
 ```
-uv run -m encode.py <CONFIGURATION_PATH> <INPUT_IMAGE> <COMPRESSED_IMAGE>
+python3 encode.py <CONFIGURATION_PATH> <INPUT_IMAGE> <COMPRESSED_IMAGE>
 ```
 
 For example, to encode the image \#3 from the Kodak dataset located at "test_images/kodak/3.png" and save it at "kodim03.nif" run:
 ```
-uv run -m encode configurations/nif/kodak/120.yaml test_images/kodak/3.png kodim03.nif
+python3 encode.py configurations/nif/kodak/120.yaml test_images/kodak/3.png kodim03.nif
 ```
 
 Analogously, you can decode a compressed image using the ```decode.py``` script:
 
 ```
-uv run -m decode <CONFIGURATION_PATH> <COMPRESSED_IMAGE> <DECOMPRESSED_IMAGE> 
+python3 decode.py <CONFIGURATION_PATH> <COMPRESSED_IMAGE> <DECOMPRESSED_IMAGE> 
 ```
 
 To decompress the image encoded in the example above, use:
 ```
-uv run -m decode configurations/nif/kodak/120.yaml kodim03.nif kodim03_decoded.png
+python3 decode.py configurations/nif/kodak/120.yaml kodim03.nif kodim03_decoded.png
 ```
 
 Input files should be encoded in lossless PNG format.
@@ -49,7 +57,7 @@ Then execute it with ```./schedule.sh```.
 If you want to perform a full encode-decode experiment on a single image and to export stats, on Linux/MacOS systems you can use the "scripts/run/full_experiment.sh" script as follows:
 
 ```
-uv run bash scripts/run/experiment.sh <CONFIGURATION_PATH> <INPUT_IMAGE> <OUTPUT_FOLDER>
+./scripts/run/experiment.sh <CONFIGURATION_PATH> <INPUT_IMAGE> <OUTPUT_FOLDER>
 ```
 
 The compressed and then decoded images, along with stats saved in JSON, will be exported in the indicated output folder.
