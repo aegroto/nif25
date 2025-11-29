@@ -1,0 +1,15 @@
+__loss: &loss
+  - { type: l2, weight: 1.0 }
+
+fitting:
+  training:
+    loss: *loss
+
+quantization:
+  training:
+    loss: *loss
+
+quantization_search:
+  eval_mode: "psnr"
+
+

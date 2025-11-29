@@ -1,7 +1,0 @@
-model:
-  genesis_params:
-    architecture: { range: [320, 64], e: 4.5, length: 6 }
-
-quantization_search:
-  drop_tolerance: 0.5
-

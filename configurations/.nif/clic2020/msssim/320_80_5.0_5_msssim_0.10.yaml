@@ -1,6 +1,6 @@
 model:
   genesis_params:
-    architecture: { range: [320, 64], e: 4.5, length: 6 }
+    architecture: { range: [320, 80], e: 5.0, length: 5 }
 
 __loss: &loss
   - { type: l1, weight: 0.8 }
@@ -16,7 +16,7 @@ quantization:
 
 quantization_search:
   eval_mode: "ms-ssim"
-  drop_tolerance: 0.05
+  drop_tolerance: 0.10
 
 
 

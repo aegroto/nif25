@@ -1,0 +1,22 @@
+__loss: &id001
+- type: log_cosh
+  weight: 1.0
+- type: ssim
+  weight: 0.01
+fitting:
+  training:
+    loss: *id001
+model:
+  genesis_params:
+    architecture:
+      e: 4.5
+      length: 6
+      range:
+      - 320
+      - 64
+quantization:
+  training:
+    loss: *id001
+quantization_search:
+  drop_tolerance: 0.05
+  eval_mode: ms-ssim

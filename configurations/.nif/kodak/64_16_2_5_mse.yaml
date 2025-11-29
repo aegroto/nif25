@@ -1,0 +1,20 @@
+__loss: &id001
+- type: l2
+  weight: 1.0
+fitting:
+  training:
+    loss: *id001
+model:
+  genesis_params:
+    architecture:
+      e: 2.5
+      length: 5
+      range:
+      - 64
+      - 16
+quantization:
+  training:
+    loss: *id001
+quantization_search:
+  drop_tolerance: 0.3
+  eval_mode: psnr

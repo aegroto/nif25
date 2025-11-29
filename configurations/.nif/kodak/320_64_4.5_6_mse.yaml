@@ -1,8 +1,6 @@
 __loss: &id001
-- type: l1
-  weight: 0.8
-- type: ssim
-  weight: 0.2
+- type: l2
+  weight: 1.0
 fitting:
   training:
     loss: *id001
@@ -12,11 +10,11 @@ model:
       e: 4.5
       length: 6
       range:
-      - 240
-      - 48
+      - 320
+      - 64
 quantization:
   training:
     loss: *id001
 quantization_search:
-  drop_tolerance: 0.3
-  eval_mode: ms-ssim
+  drop_tolerance: 0.5
+  eval_mode: psnr
