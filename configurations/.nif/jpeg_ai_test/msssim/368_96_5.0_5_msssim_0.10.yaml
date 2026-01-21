@@ -1,0 +1,22 @@
+model:
+  genesis_params:
+    architecture: { range: [368, 96], e: 5.0, length: 5 }
+
+__loss: &loss
+  - { type: l1, weight: 0.8 }
+  - { type: ssim, weight: 0.2 }
+
+fitting:
+  training:
+    loss: *loss
+
+quantization:
+  training:
+    loss: *loss
+
+quantization_search:
+  eval_mode: "ms-ssim"
+  drop_tolerance: 0.10
+
+
+

@@ -1,0 +1,22 @@
+model:
+  genesis_params:
+    architecture:
+      range:
+      - 480
+      - 96
+      e: 6.0
+      length: 5
+  generator_params:
+    shuffle: 4
+__loss: &id001
+- type: log_cosh
+  weight: 1.0
+fitting:
+  training:
+    loss: *id001
+quantization:
+  training:
+    loss: *id001
+quantization_search:
+  eval_mode: psnr
+  drop_tolerance: 0.45

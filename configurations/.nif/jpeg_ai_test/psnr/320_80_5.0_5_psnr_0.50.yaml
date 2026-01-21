@@ -1,0 +1,23 @@
+model:
+  genesis_params:
+    architecture: { range: [320, 80], e: 5.0, length: 5 }
+
+__loss: &loss
+  - { type: log_cosh, weight: 1.0 }
+
+fitting:
+  training:
+    loss: *loss
+
+quantization:
+  training:
+    loss: *loss
+
+quantization_search:
+  eval_mode: "psnr"
+  drop_tolerance: 0.5
+
+
+
+
+

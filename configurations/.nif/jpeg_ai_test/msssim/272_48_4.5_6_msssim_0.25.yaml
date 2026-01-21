@@ -1,0 +1,24 @@
+__loss: &id001
+- type: l1
+  weight: 0.8
+- type: ssim
+  weight: 0.2
+fitting:
+  training:
+    loss: *id001
+model:
+  genesis_params:
+    architecture:
+      e: 4.5
+      length: 6
+      range:
+      - 272
+      - 48
+  generator_params:
+    shuffle: 4
+quantization:
+  training:
+    loss: *id001
+quantization_search:
+  drop_tolerance: 0.25
+  eval_mode: ms-ssim
